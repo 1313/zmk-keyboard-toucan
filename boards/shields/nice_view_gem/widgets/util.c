@@ -32,7 +32,7 @@ void canvas_draw_text(lv_obj_t *canvas, int32_t x, int32_t y, int32_t max_w,
     lv_layer_t layer;
     lv_canvas_init_layer(canvas, &layer);
     label_dsc->text = text;
-    lv_area_t coords = {x, y, x + max_w, y + CANVAS_SIZE};
+    lv_area_t coords = {x, y, x + max_w, y + CANVAS_H};
     lv_draw_label(&layer, label_dsc, &coords);
     lv_canvas_finish_layer(canvas, &layer);
 }

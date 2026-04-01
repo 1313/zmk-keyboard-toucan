@@ -13,25 +13,31 @@ int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent) {
     lv_obj_set_style_bg_color(widget->obj, LVGL_BACKGROUND, LV_PART_MAIN);
     lv_obj_set_style_bg_opa(widget->obj, LV_OPA_COVER, LV_PART_MAIN);
 
-    /* Single 68x68 canvas - same pattern as upstream gem */
     lv_obj_t *canvas = lv_canvas_create(widget->obj);
     lv_obj_align(canvas, LV_ALIGN_TOP_LEFT, 0, 0);
-    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_SIZE, CANVAS_SIZE, CANVAS_COLOR_FORMAT);
+    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_W, CANVAS_H, CANVAS_COLOR_FORMAT);
 
-    /* Draw test pattern */
     fill_background(canvas);
 
-    lv_draw_rect_dsc_t rect_dsc;
-    init_rect_dsc(&rect_dsc, LVGL_FOREGROUND);
-    canvas_draw_rect(canvas, 5, 5, 58, 58, &rect_dsc);
+    /* Border around entire canvas */
+    lv_draw_rect_dsc_t rect_fg;
+    init_rect_dsc(&rect_fg, LVGL_FOREGROUND);
+    canvas_draw_rect(canvas, 0, 0, CANVAS_W, CANVAS_H, &rect_fg);
 
     lv_draw_rect_dsc_t rect_bg;
     init_rect_dsc(&rect_bg, LVGL_BACKGROUND);
-    canvas_draw_rect(canvas, 8, 8, 52, 52, &rect_bg);
+    canvas_draw_rect(canvas, 2, 2, CANVAS_W - 4, CANVAS_H - 4, &rect_bg);
 
-    lv_draw_label_dsc_t label_dsc;
-    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_montserrat_18, LV_TEXT_ALIGN_CENTER);
-    canvas_draw_text(canvas, 0, 20, CANVAS_SIZE, &label_dsc, "ZMK");
+    /* Top: "ZMK" */
+    lv_draw_label_dsc_t label_lg;
+    init_label_dsc(&label_lg, LVGL_FOREGROUND, &lv_font_montserrat_18, LV_TEXT_ALIGN_CENTER);
+    canvas_draw_text(canvas, 0, 10, CANVAS_W, &label_lg, "ZMK");
+
+    /* Middle: "TOUCAN" */
+    canvas_draw_text(canvas, 0, 70, CANVAS_W, &label_lg, "TOUCAN");
+
+    /* Bottom: "144x168" */
+    canvas_draw_text(canvas, 0, 130, CANVAS_W, &label_lg, "144x168");
 
     sys_slist_append(&widgets, &widget->node);
     return 0;
