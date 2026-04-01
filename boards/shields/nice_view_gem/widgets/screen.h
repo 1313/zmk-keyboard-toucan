@@ -7,7 +7,7 @@
 struct zmk_widget_screen {
     sys_snode_t node;
     lv_obj_t *obj;
-    struct status_state state;
+    uint8_t cbuf[CANVAS_BUF_SIZE];
 };
 
 int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent);

@@ -1,12 +1,5 @@
 #include "widgets/screen.h"
 
-#include <zephyr/logging/log.h>
-LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
-
-#include "assets/quinquefive_24.c"
-#include "assets/quinquefive_8.c"
-#include "assets/custom_fonts.h"
-
 #if IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_STATUS)
 static struct zmk_widget_screen screen_widget;
 #endif
@@ -14,8 +7,6 @@ static struct zmk_widget_screen screen_widget;
 lv_obj_t *zmk_display_status_screen() {
     lv_obj_t *screen;
     screen = lv_obj_create(NULL);
-    lv_obj_set_style_bg_color(screen, lv_color_black(), 0);
-    lv_obj_set_style_bg_opa(screen, LV_OPA_COVER, 0);
 
 #if IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_STATUS)
     zmk_widget_screen_init(&screen_widget, screen);
