@@ -12,6 +12,8 @@
         reg = <0>;
         width = <144>;
         height = <168>;
+        serial-vcom-inversion;
+        serial-vcom-interval = <33>;
     };
 };
 

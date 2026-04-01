@@ -26,9 +26,28 @@ nice_view_spi: &spi0 {
    pinctrl-1 = <&spi0_sleep>;
    pinctrl-names = "default", "sleep";
    cs-gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+   status = "okay";
+
+   nice_view: ls0xx@0 {
+       compatible = "sharp,ls0xx";
+       spi-max-frequency = <1000000>;
+       reg = <0>;
+       width = <144>;
+       height = <168>;
+   };
+};
+
+/ {
+    chosen {
+        zephyr,display = &nice_view;
+    };
 };
 
 &xiao_i2c {
+    status = "disabled";
+};
+
+&uart0 {
     status = "disabled";
 };
 

@@ -7,9 +7,11 @@
 struct zmk_widget_screen {
     sys_snode_t node;
     lv_obj_t *obj;
-    lv_color_t cbuf[SCREEN_WIDTH * SCREEN_HEIGHT];
-    lv_color_t cbuf2[SCREEN_WIDTH * SCREEN_HEIGHT];
-    lv_color_t cbuf3[SCREEN_WIDTH * SCREEN_HEIGHT];
+    lv_obj_t *battery_label;
+    lv_obj_t *battery_p_label;
+    lv_obj_t *output_label;
+    lv_obj_t *layer_label;
+    lv_obj_t *profile_label;
     struct status_state state;
 };
 
