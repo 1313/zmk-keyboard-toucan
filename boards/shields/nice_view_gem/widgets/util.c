@@ -36,3 +36,13 @@ void canvas_draw_text(lv_obj_t *canvas, int32_t x, int32_t y, int32_t max_w,
     lv_draw_label(&layer, label_dsc, &coords);
     lv_canvas_finish_layer(canvas, &layer);
 }
+
+void canvas_draw_img(lv_obj_t *canvas, int32_t x, int32_t y, const lv_image_dsc_t *src,
+                     lv_draw_image_dsc_t *img_dsc) {
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+    img_dsc->src = src;
+    lv_area_t coords = {x, y, x + src->header.w - 1, y + src->header.h - 1};
+    lv_draw_image(&layer, img_dsc, &coords);
+    lv_canvas_finish_layer(canvas, &layer);
+}

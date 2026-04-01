@@ -50,3 +50,5 @@ void canvas_draw_rect(lv_obj_t *canvas, int32_t x, int32_t y, int32_t w, int32_t
                       lv_draw_rect_dsc_t *rect_dsc);
 void canvas_draw_text(lv_obj_t *canvas, int32_t x, int32_t y, int32_t max_w,
                       lv_draw_label_dsc_t *label_dsc, const char *text);
+void canvas_draw_img(lv_obj_t *canvas, int32_t x, int32_t y, const lv_image_dsc_t *src,
+                     lv_draw_image_dsc_t *img_dsc);
