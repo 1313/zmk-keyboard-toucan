@@ -7,11 +7,6 @@
 struct zmk_widget_screen {
     sys_snode_t node;
     lv_obj_t *obj;
-    lv_obj_t *battery_label;
-    lv_obj_t *battery_p_label;
-    lv_obj_t *output_label;
-    lv_obj_t *layer_label;
-    lv_obj_t *profile_label;
     struct status_state state;
 };
 
