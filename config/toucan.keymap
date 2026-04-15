@@ -35,44 +35,6 @@
         };
     };
 
-    macros {
-        // Zellij pane mode (Ctrl+P → key)
-        zj_np: zj_np { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp N>; };
-        zj_spd: zj_spd { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp D>; };
-        zj_spr: zj_spr { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp R>; };
-        zj_cpane: zj_cpane { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp X>; };
-        zj_full: zj_full { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp F>; };
-        zj_float: zj_float { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp W>; };
-        zj_fh: zj_fh { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp H>; };
-        zj_fj: zj_fj { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp J>; };
-        zj_fk: zj_fk { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp K>; };
-        zj_fl: zj_fl { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(P)>, <&macro_wait_time 50>, <&macro_tap &kp L>; };
-        // Zellij tab mode (Ctrl+T → key)
-        zj_ntab: zj_ntab { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(T)>, <&macro_wait_time 50>, <&macro_tap &kp N>; };
-        zj_ctab: zj_ctab { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(T)>, <&macro_wait_time 50>, <&macro_tap &kp X>; };
-        zj_ptab: zj_ptab { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(T)>, <&macro_wait_time 50>, <&macro_tap &kp H>; };
-        zj_nxtab: zj_nxtab { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(T)>, <&macro_wait_time 50>, <&macro_tap &kp L>; };
-        // Zellij session mode (Ctrl+O → key)
-        zj_det: zj_det { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(O)>, <&macro_wait_time 50>, <&macro_tap &kp D>; };
-        zj_sess: zj_sess { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
-            bindings = <&macro_tap &kp LC(O)>, <&macro_wait_time 50>, <&macro_tap &kp W>; };
-    };
-
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
@@ -126,9 +88,9 @@
         app {
             display-name = "APP";
             bindings = <
-                &kp LS(LC(LA(LG(X))))    &kp LS(LC(LA(LG(LEFT))))  &kp LS(LC(LA(LG(UP))))    &kp LS(LC(LA(LG(DOWN))))  &kp LS(LC(LA(LG(RIGHT)))) &kp LS(LC(LA(LG(T))))     &zj_np       &zj_spd     &zj_spr    &zj_cpane    &zj_full  &zj_float
-                &kp LS(LC(LA(LG(RET))))  &kp LS(LC(LA(LG(A))))     &kp LS(LC(LA(LG(S))))     &kp LS(LC(LA(LG(W))))     &kp LS(LC(LA(LG(D))))     &kp LS(LC(LA(LG(M))))     &zj_fh       &zj_fj      &zj_fk     &zj_fl       &zj_sess  &zj_det
-                &kp LS(LC(LA(LG(E))))    &kp LS(LC(LA(LG(F1))))    &kp LS(LC(LA(LG(F2))))    &kp LS(LC(LA(LG(F3))))    &kp LS(LC(LA(LG(F4))))    &kp LS(LC(LA(LG(F5))))    &zj_ptab     &zj_ntab    &zj_ctab   &zj_nxtab    &kp LC(G) &trans
+                &kp LS(LC(LA(LG(X))))    &kp LS(LC(LA(LG(A))))     &kp LS(LC(LA(LG(S))))     &kp LS(LC(LA(LG(W))))     &kp LS(LC(LA(LG(D))))     &kp LS(LC(LA(LG(T))))     &kp LA(N)    &kp LA(S)   &kp LA(R)  &kp LA(C)    &kp LA(Z) &kp LA(F)
+                &kp LS(LC(LA(LG(RET))))  &kp LS(LC(LA(LG(LEFT))))  &kp LS(LC(LA(LG(DOWN))))  &kp LS(LC(LA(LG(UP))))    &kp LS(LC(LA(LG(RIGHT)))) &kp LS(LC(LA(LG(M))))     &kp LA(H)    &kp LA(J)   &kp LA(K)  &kp LA(L)    &kp LA(W) &kp LA(Q)
+                &kp LS(LC(LA(LG(E))))    &kp LS(LC(LA(LG(F1))))    &kp LS(LC(LA(LG(F2))))    &kp LS(LC(LA(LG(F3))))    &kp LS(LC(LA(LG(F4))))    &kp LS(LC(LA(LG(F5))))    &kp LA(LG(LEFT)) &kp LA(T) &kp LA(X) &kp LA(LG(RIGHT)) &kp LC(G) &trans
                                                                                                &trans &trans &trans   &trans &trans &kp LA(SPACE)
             >;
         };
