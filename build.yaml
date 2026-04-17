@@ -26,4 +26,9 @@ include:
   - board: xiao_ble//zmk
     shield: toucan_right rgbled_adapter
   - board: xiao_ble//zmk
+    shield: toucan_right rgbled_adapter
+    snippet: zmk-usb-logging
+    cmake-args: -DCONFIG_INPUT_EVENT_DUMP=y
+    artifact-name: toucan_right_debug
+  - board: xiao_ble//zmk
     shield: settings_reset
