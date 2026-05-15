@@ -1,0 +1,87 @@
+# keymap-drawer configuration
+# https://github.com/caksoylar/keymap-drawer/blob/main/CONFIGURATION.md
+
+draw_config:
+  # Color theme - matches the Toucan's nice_view_gem display
+  dark_mode: auto
+
+  # Visualization tweaks for the layout
+  key_w: 60
+  key_h: 60
+  split_gap: 60
+  combo_w: 28
+  combo_h: 26
+
+  # Bigger fonts so screenshots are still readable when downscaled
+  small_pad: 2
+  line_spacing: 18
+  inner_pad_w: 2
+  inner_pad_h: 2
+  outer_pad_w: 16
+  outer_pad_h: 16
+
+  # Show free-form text (footer) under the diagram
+  footer_text: 'Generated from config/toucan.keymap by keymap-drawer'
+
+# Pretty up some symbols / behaviors that show up cluttered by default
+parse_config:
+  # Render hold-tap (hml/hmr) home-row mods as "MOD KEY" stacked
+  preprocess: true
+  raw_binding_map:
+    '&studio_unlock': '🔓'
+    '&bt BT_CLR': 'BT CLR'
+    '&bt BT_SEL 0': 'BT 1'
+    '&bt BT_SEL 1': 'BT 2'
+    '&bt BT_SEL 2': 'BT 3'
+    '&bt BT_SEL 3': 'BT 4'
+    '&bt BT_SEL 4': 'BT 5'
+
+  zmk_keycode_map:
+    KP_MULTIPLY: '*'
+    UNDER: '_'
+    EXCL: '!'
+    AT_SIGN: '@'
+    HASH: '#'
+    DLLR: '$'
+    PRCNT: '%'
+    CARET: '^'
+    AMPS: '&'
+    LPAR: '('
+    RPAR: ')'
+    LBKT: '['
+    RBKT: ']'
+    LBRC: '{'
+    RBRC: '}'
+    BSLH: '\'
+    PIPE: '|'
+    GRAVE: '`'
+    TILDE: '~'
+    SQT: "'"
+    SEMI: ';'
+    COMMA: ','
+    DOT: '.'
+    FSLH: '/'
+    MINUS: '-'
+    EQUAL: '='
+    PLUS: '+'
+    BSPC: '⌫'
+    DEL: '⌦'
+    RET: '⏎'
+    SPACE: '␣'
+    TAB: '⇥'
+    ESC: '⎋'
+    LSHFT: '⇧'
+    RSHFT: '⇧'
+    LCTRL: '⌃'
+    RCTRL: '⌃'
+    LALT: '⌥'
+    RALT: '⌥'
+    LGUI: '⌘'
+    RGUI: '⌘'
+    UP: '↑'
+    DOWN: '↓'
+    LEFT: '←'
+    RIGHT: '→'
+    C_VOL_UP: '🔊'
+    C_VOL_DN: '🔉'
+    C_MUTE: '🔇'
