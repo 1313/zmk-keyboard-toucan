@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# West workspace (regenerated via `west init -l config && west update`)
+.west/
+zephyr/
+!zephyr/module.yml
+zmk/
+zmk-rgbled-widget/
+cirque-input-module/
+nice-view-elemental/
+nice-view-gem/
+modules/
+optional/
+
+# Build output
+build/
+
+# Local firmware artifacts (downloaded from CI)
+firmware-artifacts/
