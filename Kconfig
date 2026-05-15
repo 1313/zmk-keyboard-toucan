@@ -1,0 +1,5 @@
+# Root Kconfig for this repo when used as a Zephyr module.
+# Wires in the vendored SoftDevice Controller Kconfigs so symbols like
+# BT_LL_SOFTDEVICE become defined and selectable.
+
+rsource "modules/sdc/Kconfig"
