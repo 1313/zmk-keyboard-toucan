@@ -66,9 +66,7 @@ static bool command_generates_command_complete_event(uint16_t hci_opcode)
 	case SDC_HCI_OPCODE_CMD_LE_SUBRATE_REQUEST:
 #if defined(CONFIG_BT_CTLR_CHANNEL_SOUNDING)
 	case SDC_HCI_OPCODE_CMD_LE_CS_READ_REMOTE_SUPPORTED_CAPABILITIES:
-#if defined(CONFIG_BT_CENTRAL)
 	case SDC_HCI_OPCODE_CMD_LE_CS_SECURITY_ENABLE:
-#endif /* CONFIG_BT_CENTRAL */
 	case SDC_HCI_OPCODE_CMD_LE_CS_READ_REMOTE_FAE_TABLE:
 	case SDC_HCI_OPCODE_CMD_LE_CS_CREATE_CONFIG:
 	case SDC_HCI_OPCODE_CMD_LE_CS_REMOVE_CONFIG:
@@ -442,10 +440,6 @@ void hci_internal_supported_commands(sdc_hci_ip_supported_commands_t *cmds)
 	cmds->hci_le_transmitter_test_v2 = 1;
 #endif
 
-#if defined(CONFIG_BT_CTLR_DTM_HCI_RX_V3)
-	cmds->hci_le_receiver_test_v3 = 1;
-#endif
-
 #if defined(CONFIG_BT_CTLR_DTM_HCI_TX_V3)
 	cmds->hci_le_transmitter_test_v3 = 1;
 #endif
@@ -641,17 +635,13 @@ void hci_internal_supported_commands(sdc_hci_ip_supported_commands_t *cmds)
 	cmds->hci_le_cs_create_config = 1;
 	cmds->hci_le_cs_remove_config = 1;
 	cmds->hci_le_cs_read_local_supported_capabilities = 1;
-	cmds->hci_le_cs_read_local_supported_capabilities_v2 = 1;
 	cmds->hci_le_cs_read_remote_supported_capabilities = 1;
 	cmds->hci_le_cs_write_cached_remote_supported_capabilities = 1;
-	cmds->hci_le_cs_write_cached_remote_supported_capabilities_v2 = 1;
 #if defined(CONFIG_BT_CTLR_CHANNEL_SOUNDING_TEST)
 	cmds->hci_le_cs_test = 1;
 	cmds->hci_le_cs_test_end = 1;
 #endif /* CONFIG_BT_CTLR_CHANNEL_SOUNDING_TEST */
-#if defined(CONFIG_BT_CENTRAL)
 	cmds->hci_le_cs_security_enable = 1;
-#endif /* CONFIG_BT_CENTRAL */
 	cmds->hci_le_cs_set_default_settings = 1;
 	cmds->hci_le_cs_set_channel_classification = 1;
 	cmds->hci_le_cs_set_procedure_parameters = 1;
@@ -671,11 +661,6 @@ void hci_internal_supported_commands(sdc_hci_ip_supported_commands_t *cmds)
 #endif /* CONFIG_BT_CENTRAL */
 	cmds->hci_le_read_minimum_supported_connection_interval = 1;
 #endif /* CONFIG_BT_CTLR_SHORTER_CONNECTION_INTERVALS */
-
-#if defined(CONFIG_BT_CTLR_LE_FLUSHABLE_ACL_DATA)
-	cmds->hci_read_automatic_flush_timeout = 1;
-	cmds->hci_write_automatic_flush_timeout = 1;
-#endif /* CONFIG_BT_CTLR_LE_FLUSHABLE_ACL_DATA */
 }
 
 #if defined(CONFIG_BT_HCI_VS)
@@ -1491,10 +1476,8 @@ static uint8_t le_controller_cmd_put(uint8_t const * const cmd,
 			sdc_hci_cmd_le_cs_write_cached_remote_supported_capabilities_return_t);
 		return sdc_hci_cmd_le_cs_write_cached_remote_supported_capabilities(
 			(void *)cmd_params, (void *)event_out_params);
-#if defined(CONFIG_BT_CENTRAL)
 	case SDC_HCI_OPCODE_CMD_LE_CS_SECURITY_ENABLE:
 		return sdc_hci_cmd_le_cs_security_enable((void *)cmd_params);
-#endif /* CONFIG_BT_CENTRAL */
 	case SDC_HCI_OPCODE_CMD_LE_CS_SET_DEFAULT_SETTINGS:
 		*param_length_out += sizeof(sdc_hci_cmd_le_cs_set_default_settings_return_t);
 		return sdc_hci_cmd_le_cs_set_default_settings((void *)cmd_params,
@@ -1518,16 +1501,6 @@ static uint8_t le_controller_cmd_put(uint8_t const * const cmd,
 							(void *)event_out_params);
 	case SDC_HCI_OPCODE_CMD_LE_CS_PROCEDURE_ENABLE:
 		return sdc_hci_cmd_le_cs_procedure_enable((void *)cmd_params);
-	case SDC_HCI_OPCODE_CMD_LE_CS_READ_LOCAL_SUPPORTED_CAPABILITIES_V2:
-		*param_length_out +=
-			sizeof(sdc_hci_cmd_le_cs_read_local_supported_capabilities_v2_return_t);
-		return sdc_hci_cmd_le_cs_read_local_supported_capabilities_v2(
-			(void *)event_out_params);
-	case SDC_HCI_OPCODE_CMD_LE_CS_WRITE_CACHED_REMOTE_SUPPORTED_CAPABILITIES_V2:
-		*param_length_out += sizeof(
-			sdc_hci_cmd_le_cs_write_cached_remote_supported_capabilities_v2_return_t);
-		return sdc_hci_cmd_le_cs_write_cached_remote_supported_capabilities_v2(
-			(void *)cmd_params, (void *)event_out_params);
 #if defined(CONFIG_BT_CTLR_CHANNEL_SOUNDING_TEST)
 	case SDC_HCI_OPCODE_CMD_LE_CS_TEST:
 		return sdc_hci_cmd_le_cs_test((void *)cmd_params);
@@ -1579,10 +1552,6 @@ static uint8_t le_controller_cmd_put(uint8_t const * const cmd,
 		return sdc_hci_cmd_le_receiver_test_v1((void *)cmd_params);
 	case SDC_HCI_OPCODE_CMD_LE_RECEIVER_TEST_V2:
 		return sdc_hci_cmd_le_receiver_test_v2((void *)cmd_params);
-#if defined(CONFIG_BT_CTLR_DTM_HCI_RX_V3)
-	case SDC_HCI_OPCODE_CMD_LE_RECEIVER_TEST_V3:
-		return sdc_hci_cmd_le_receiver_test_v3((void *)cmd_params);
-#endif /* CONFIG_BT_CTLR_DTM_HCI_RX_V3 */
 	case SDC_HCI_OPCODE_CMD_LE_TRANSMITTER_TEST_V1:
 		return sdc_hci_cmd_le_transmitter_test_v1((void *)cmd_params);
 	case SDC_HCI_OPCODE_CMD_LE_TRANSMITTER_TEST_V2:
@@ -1759,11 +1728,6 @@ static uint8_t vs_cmd_put(uint8_t const *const cmd, uint8_t *const raw_event_out
 	case SDC_HCI_OPCODE_CMD_VS_ENABLE_PERIODIC_ADV_EVENT_COUNTER_REPORTS:
 		return sdc_hci_cmd_vs_enable_periodic_adv_event_counter_reports(
 		(sdc_hci_cmd_vs_enable_periodic_adv_event_counter_reports_t const *)cmd_params);
-#endif
-#if defined(CONFIG_BT_CTLR_DTM_HCI)
-	case SDC_HCI_OPCODE_CMD_VS_TRANSMITTER_CARRIER_TEST:
-		return sdc_hci_cmd_vs_transmitter_carrier_test(
-		(sdc_hci_cmd_vs_transmitter_carrier_test_t const *)cmd_params);
 #endif
 	default:
 		return BT_HCI_ERR_UNKNOWN_CMD;

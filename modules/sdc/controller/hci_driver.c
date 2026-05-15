@@ -921,12 +921,7 @@ static void configure_supported_features(void)
 	}
 
 	if (IS_ENABLED(CONFIG_BT_CTLR_EXTENDED_FEAT_SET)) {
-		if (IS_ENABLED(CONFIG_BT_CENTRAL)) {
-			sdc_support_extended_feature_set_central();
-		}
-		if (IS_ENABLED(CONFIG_BT_PERIPHERAL)) {
-			sdc_support_extended_feature_set_peripheral();
-		}
+		sdc_support_extended_feature_set();
 	}
 
 	if (IS_ENABLED(CONFIG_BT_CTLR_LE_FLUSHABLE_ACL_DATA)) {
@@ -949,23 +944,13 @@ static void configure_supported_features(void)
 	}
 
 	if (IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_INITIATOR_ONLY) ||
-	    IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_BOTH)) {
-		if (IS_ENABLED(CONFIG_BT_CENTRAL)) {
-			sdc_support_channel_sounding_initiator_role_central();
-		}
-		if (IS_ENABLED(CONFIG_BT_PERIPHERAL)) {
-			sdc_support_channel_sounding_initiator_role_peripheral();
-		}
+		IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_BOTH)) {
+		sdc_support_channel_sounding_initiator_role();
 	}
 
 	if (IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_REFLECTOR_ONLY) ||
-	    IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_BOTH)) {
-		if (IS_ENABLED(CONFIG_BT_CENTRAL)) {
-			sdc_support_channel_sounding_reflector_role_central();
-		}
-		if (IS_ENABLED(CONFIG_BT_PERIPHERAL)) {
-			sdc_support_channel_sounding_reflector_role_peripheral();
-		}
+		IS_ENABLED(CONFIG_BT_CTLR_SDC_CS_ROLE_BOTH)) {
+		sdc_support_channel_sounding_reflector_role();
 	}
 
 	if (IS_ENABLED(CONFIG_BT_CTLR_SDC_LE_POWER_CLASS_1)) {

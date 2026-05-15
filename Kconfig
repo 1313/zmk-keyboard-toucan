@@ -1,5 +1,15 @@
 # Root Kconfig for this repo when used as a Zephyr module.
-# Wires in the vendored SoftDevice Controller Kconfigs so symbols like
-# BT_LL_SOFTDEVICE become defined and selectable.
+#
+# Gate the vendored SDC integration behind a top-level "attempt" symbol
+# so the vendored Kconfig (which references newer-than-our-Zephyr
+# symbols) doesn't break non-SD builds during the iteration phase.
+#
+# Enable via -DCONFIG_TOUCAN_SDC_ATTEMPT=y on the SD build variants.
 
+config TOUCAN_SDC_ATTEMPT
+	bool "Enable the experimental vendored SoftDevice Controller integration"
+	default n
+
+if TOUCAN_SDC_ATTEMPT
 rsource "modules/sdc/Kconfig"
+endif
