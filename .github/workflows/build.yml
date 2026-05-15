@@ -3,4 +3,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # Pinned to a specific zmkfirmware/zmk commit (ead91ca0, 2026-05) so
+    # upstream workflow changes can't break our CI silently. Bump
+    # explicitly when needed.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@ead91ca094c6cd778574f73b9ae011ddab611c66

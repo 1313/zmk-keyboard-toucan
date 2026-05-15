@@ -1,4 +1,6 @@
 #include <zephyr/kernel.h>
+#include <stdio.h>
+
 #include "battery_peripheral.h"
 #include "../assets/custom_fonts.h"
 
@@ -28,6 +30,12 @@ static void draw_level_peripheral(lv_obj_t *canvas, const struct status_state *s
     } else {
         canvas_draw_img(canvas, 80, 10, &r_battery_10, &img_dsc_r);
     }
+
+    char pct[5];
+    snprintf(pct, sizeof(pct), "%u%%", state->battery_p);
+    lv_draw_label_dsc_t label_dsc;
+    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &quinquefive_8, LV_TEXT_ALIGN_LEFT);
+    canvas_draw_text(canvas, 80, 42, 56, &label_dsc, pct);
 }
 
 void draw_battery_peripheral_status(lv_obj_t *canvas, const struct status_state *state) {

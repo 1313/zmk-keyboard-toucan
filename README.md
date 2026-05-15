@@ -12,8 +12,10 @@ CI builds via GitHub Actions on every push (see `.github/workflows/build.yml`). 
 west init -l config
 west update
 west zephyr-export
-west build -s zmk/app -b xiao_ble//zmk -- -DSHIELD="toucan_left rgbled_adapter nice_view_gem"
+./scripts/build.sh left   # or left_studio | right | right_debug | reset
 ```
+
+`scripts/build.sh` wraps the right `west build` invocation per variant; the resulting `*.uf2` is in `build/<target>/zephyr/zmk.uf2`.
 
 Built variants:
 
