@@ -1,0 +1,28 @@
+/*
+ * Wire up Nordic's SoftDevice Controller (SDC) as the BLE controller
+ * device on nRF52840:
+ *   - Enable the bt_hci_sdc node under the radio peripheral.
+ *   - Disable Zephyr's built-in bt_hci_controller.
+ *   - Re-route the zephyr,bt-hci chosen to point at SDC.
+ *
+ * This is the device-tree side of CONFIG_BT_LL_SOFTDEVICE=y; without
+ * it the BT_LL_SOFTDEVICE Kconfig is silently rejected because of its
+ * 'depends on DT_HAS_NORDIC_BT_HCI_SDC_ENABLED' clause.
+ */
+
+/ {
+    chosen {
+        zephyr,bt-hci = &bt_hci_sdc;
+    };
+};
+
+&radio {
+    bt_hci_sdc: bt_hci_sdc {
+        compatible = "nordic,bt-hci-sdc";
+        status = "okay";
+    };
+};
+
+&bt_hci_controller {
+    status = "disabled";
+};
