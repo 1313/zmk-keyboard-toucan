@@ -1,0 +1,23 @@
+# SoftDevice Controller (SDC) BLE controller integration.
+#
+# This is a personal experiment vendoring sdk-nrf's BLE controller integration
+# into our config so the standard ZMK build can use Nordic's SoftDevice
+# Controller from nrfxlib instead of Zephyr's built-in BLE controller.
+#
+# Sources are vendored from https://github.com/nrfconnect/sdk-nrf @ main:
+#
+#   subsys/bluetooth/controller/   -> controller/
+#   lib/multithreading_lock/       -> lib/multithreading_lock/
+#   dts/bindings/bluetooth/        -> dts/bindings/bluetooth/
+#
+# These files are © Nordic Semiconductor ASA and licensed under
+# LicenseRef-Nordic-5-Clause; see the SPDX headers in each file.
+#
+# This integration also requires `nrfxlib` to be present as a Zephyr module
+# (added via config/west.yml), which provides:
+#   - The SoftDevice Controller binary library (libsoftdevice_controller_*.a)
+#   - The Multi-Protocol Service Layer (MPSL)
+#   - Headers for sdc.h, sdc_hci.h, sdc_soc.h, mpsl.h, etc.
+#
+# Status: experimental. Untested on hardware; may need additional Kconfig glue
+# discovered through CI iterations.

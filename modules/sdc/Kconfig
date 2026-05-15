@@ -1,0 +1,5 @@
+# Kconfig for the vendored SoftDevice Controller integration.
+# Mirrors how sdk-nrf wires up the same files via Kconfig.nrf.
+
+rsource "controller/Kconfig"
+rsource "lib/multithreading_lock/Kconfig"

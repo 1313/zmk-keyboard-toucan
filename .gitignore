@@ -10,7 +10,7 @@ zmk-rgbled-widget/
 cirque-input-module/
 nice-view-elemental/
 nice-view-gem/
-modules/
+modules/*
 !modules/sdc/
 optional/
 
