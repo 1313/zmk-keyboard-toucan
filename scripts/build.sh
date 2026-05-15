@@ -9,23 +9,23 @@ target="${1:-}"
 case "$target" in
     left)
         shield="toucan_left rgbled_adapter nice_view_gem"
-        extra=()
+        extra=(--snippet nrf52840-nosd)
         ;;
     left_studio)
         shield="toucan_left rgbled_adapter nice_view_gem"
-        extra=(--snippet studio-rpc-usb-uart -- -DCONFIG_ZMK_STUDIO=y)
+        extra=(--snippet "nrf52840-nosd studio-rpc-usb-uart" -- -DCONFIG_ZMK_STUDIO=y)
         ;;
     right)
         shield="toucan_right rgbled_adapter"
-        extra=()
+        extra=(--snippet nrf52840-nosd)
         ;;
     right_debug)
         shield="toucan_right rgbled_adapter"
-        extra=(--snippet zmk-usb-logging -- -DCONFIG_INPUT_EVENT_DUMP=y)
+        extra=(--snippet "nrf52840-nosd zmk-usb-logging" -- -DCONFIG_INPUT_EVENT_DUMP=y)
         ;;
     reset)
         shield="settings_reset"
-        extra=()
+        extra=(--snippet nrf52840-nosd)
         ;;
     *)
         echo "usage: $0 <left|left_studio|right|right_debug|reset>" >&2
