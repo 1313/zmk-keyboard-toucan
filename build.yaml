@@ -38,3 +38,14 @@ include:
   - board: xiao_ble//zmk
     shield: settings_reset
     snippet: nrf52840-nosd
+  # Experimental: SoftDevice Controller (SDC) variants. Vendored from
+  # nrfconnect/sdk-nrf into modules/sdc/. Untested on hardware; first goal
+  # is just getting them to link cleanly in CI.
+  - board: xiao_ble//zmk
+    shield: toucan_left rgbled_adapter nice_view_gem
+    cmake-args: -DCONFIG_TOUCAN_SDC_ATTEMPT=y -DCONFIG_BT_LL_SOFTDEVICE=y -DCONFIG_BT_LL_SOFTDEVICE_BUILD_TYPE_LIB=y
+    artifact-name: toucan_left_sd
+  - board: xiao_ble//zmk
+    shield: toucan_right rgbled_adapter
+    cmake-args: -DCONFIG_TOUCAN_SDC_ATTEMPT=y -DCONFIG_BT_LL_SOFTDEVICE=y -DCONFIG_BT_LL_SOFTDEVICE_BUILD_TYPE_LIB=y
+    artifact-name: toucan_right_sd
