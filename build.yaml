@@ -43,9 +43,11 @@ include:
   # is just getting them to link cleanly in CI.
   - board: xiao_ble//zmk
     shield: toucan_left rgbled_adapter nice_view_gem
+    snippet: toucan-sdc
     cmake-args: -DCONFIG_TOUCAN_SDC_ATTEMPT=y -DCONFIG_BT_LL_SOFTDEVICE=y -DCONFIG_BT_LL_SOFTDEVICE_BUILD_TYPE_LIB=y
     artifact-name: toucan_left_sd
   - board: xiao_ble//zmk
     shield: toucan_right rgbled_adapter
+    snippet: toucan-sdc
     cmake-args: -DCONFIG_TOUCAN_SDC_ATTEMPT=y -DCONFIG_BT_LL_SOFTDEVICE=y -DCONFIG_BT_LL_SOFTDEVICE_BUILD_TYPE_LIB=y
     artifact-name: toucan_right_sd
