@@ -1,3 +1,0 @@
-name: toucan-sdc
-append:
-  EXTRA_DTC_OVERLAY_FILE: toucan-sdc.overlay
