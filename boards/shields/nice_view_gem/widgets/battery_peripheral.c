@@ -2,7 +2,6 @@
 #include "battery_peripheral.h"
 #include "../assets/custom_fonts.h"
 
-LV_IMAGE_DECLARE(bolt);
 LV_IMAGE_DECLARE(r_battery_100);
 LV_IMAGE_DECLARE(r_battery_90);
 LV_IMAGE_DECLARE(r_battery_75);
@@ -26,7 +25,7 @@ static void draw_level_peripheral(lv_obj_t *canvas, const struct status_state *s
         canvas_draw_img(canvas, 80, 10, &r_battery_50, &img_dsc_r);
     } else if (level > 10) {
         canvas_draw_img(canvas, 80, 10, &r_battery_25, &img_dsc_r);
-    } else if (level > 1) {
+    } else {
         canvas_draw_img(canvas, 80, 10, &r_battery_10, &img_dsc_r);
     }
 }

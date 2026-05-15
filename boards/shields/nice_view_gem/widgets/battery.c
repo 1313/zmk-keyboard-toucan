@@ -2,7 +2,6 @@
 #include "battery.h"
 #include "../assets/custom_fonts.h"
 
-LV_IMAGE_DECLARE(bolt);
 LV_IMAGE_DECLARE(l_battery_100);
 LV_IMAGE_DECLARE(l_battery_90);
 LV_IMAGE_DECLARE(l_battery_75);
@@ -26,7 +25,7 @@ static void draw_level(lv_obj_t *canvas, const struct status_state *state) {
         canvas_draw_img(canvas, 8, 10, &l_battery_50, &img_dsc_l);
     } else if (level > 10) {
         canvas_draw_img(canvas, 8, 10, &l_battery_25, &img_dsc_l);
-    } else if (level > 1) {
+    } else {
         canvas_draw_img(canvas, 8, 10, &l_battery_10, &img_dsc_l);
     }
 

@@ -11,10 +11,6 @@ struct output_status_state {
     bool active_profile_connected;
     bool active_profile_bonded;
 };
-#else
-struct peripheral_status_state {
-    bool connected;
-};
 #endif
 
 void draw_output_status(lv_obj_t *canvas, const struct status_state *state);

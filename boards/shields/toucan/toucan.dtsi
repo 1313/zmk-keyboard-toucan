@@ -108,6 +108,8 @@
         device = <&glidepoint_split>;
         input-processors = <&zip_xy_scaler 250 100>;
         scroller {
+            // Layers 1 (NAV) and 2 (SYM); keep in sync with the layer
+            // order in config/toucan.keymap.
             layers = <1 2>;
             input-processors = <
                 &zip_xy_to_scroll_mapper
