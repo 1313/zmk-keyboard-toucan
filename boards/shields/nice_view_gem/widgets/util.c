@@ -1,9 +1,7 @@
 #include <zephyr/kernel.h>
 #include "util.h"
 
-void fill_background(lv_obj_t *canvas) {
-    lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-}
+void fill_background(lv_obj_t *canvas) { lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER); }
 
 void init_label_dsc(lv_draw_label_dsc_t *label_dsc, lv_color_t color, const lv_font_t *font,
                     lv_text_align_t align) {
@@ -33,9 +31,11 @@ void canvas_draw_text(lv_obj_t *canvas, int32_t x, int32_t y, int32_t max_w,
     lv_canvas_init_layer(canvas, &layer);
     label_dsc->text = text;
     int32_t right = x + max_w - 1;
-    if (right > CANVAS_W - 1) right = CANVAS_W - 1;
+    if (right > CANVAS_W - 1)
+        right = CANVAS_W - 1;
     int32_t bottom = y + label_dsc->font->line_height - 1;
-    if (bottom > CANVAS_H - 1) bottom = CANVAS_H - 1;
+    if (bottom > CANVAS_H - 1)
+        bottom = CANVAS_H - 1;
     lv_area_t coords = {x, y, right, bottom};
     lv_draw_label(&layer, label_dsc, &coords);
     lv_canvas_finish_layer(canvas, &layer);

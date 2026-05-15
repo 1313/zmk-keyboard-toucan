@@ -82,7 +82,7 @@ ZMK_SUBSCRIPTION(widget_battery_status, zmk_battery_state_changed);
  **/
 
 static void set_battery_peripheral_status(struct zmk_widget_screen *widget,
-                               struct battery_peripheral_status_state state) {
+                                          struct battery_peripheral_status_state state) {
     widget->state.battery_p = state.level;
     draw_top(widget->obj, &widget->state);
 }
@@ -187,9 +187,7 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 
 static void force_redraw_all_widgets(void) {
     struct zmk_widget_screen *widget;
-    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) {
-        draw_top(widget->obj, &widget->state);
-    }
+    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { draw_top(widget->obj, &widget->state); }
 }
 
 static int display_activity_event_handler(const zmk_event_t *eh) {

@@ -9,13 +9,13 @@
 #define CANVAS_W 144
 #define CANVAS_H 168
 #define CANVAS_COLOR_FORMAT LV_COLOR_FORMAT_L8
-#define CANVAS_BUF_SIZE \
-    LV_CANVAS_BUF_SIZE(CANVAS_W, CANVAS_H, LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), \
+#define CANVAS_BUF_SIZE                                                                            \
+    LV_CANVAS_BUF_SIZE(CANVAS_W, CANVAS_H, LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT),           \
                        LV_DRAW_BUF_STRIDE_ALIGN)
 
-#define LVGL_BACKGROUND \
+#define LVGL_BACKGROUND                                                                            \
     (IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_INVERTED) ? lv_color_white() : lv_color_black())
-#define LVGL_FOREGROUND \
+#define LVGL_FOREGROUND                                                                            \
     (IS_ENABLED(CONFIG_NICE_VIEW_WIDGET_INVERTED) ? lv_color_black() : lv_color_white())
 
 struct status_state {

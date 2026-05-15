@@ -7,7 +7,10 @@
 
 static bool show_sleep_screen = false;
 
-// Beekeeb icon 96x96 - LVGL indexed 1-bit format 
+// Beekeeb icon 96x96 - LVGL indexed 1-bit format
+// 12 bytes per source line = 96 pixels (one image row); preserve that layout
+// across clang-format runs so the source still reads top-down like the bitmap.
+// clang-format off
 static const uint8_t sleep_icon_map[] = {
     0x00, 0x00, 0x00, 0xff, /*Color of index 0 - black*/
     0xff, 0xff, 0xff, 0xff, /*Color of index 1 - white*/
@@ -108,26 +111,24 @@ static const uint8_t sleep_icon_map[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
+// clang-format on
 
 static const lv_image_dsc_t sleep_icon = {
-    .header = {
-        .magic = LV_IMAGE_HEADER_MAGIC,
-        .cf = LV_COLOR_FORMAT_I1,
-        .w = 96,
-        .h = 96,
-        .stride = 12,
-    },
+    .header =
+        {
+            .magic = LV_IMAGE_HEADER_MAGIC,
+            .cf = LV_COLOR_FORMAT_I1,
+            .w = 96,
+            .h = 96,
+            .stride = 12,
+        },
     .data_size = sizeof(sleep_icon_map),
     .data = sleep_icon_map,
 };
 
-bool is_sleep_screen_active(void) {
-    return show_sleep_screen;
-}
+bool is_sleep_screen_active(void) { return show_sleep_screen; }
 
-void set_sleep_screen_active(bool active) {
-    show_sleep_screen = active;
-}
+void set_sleep_screen_active(bool active) { show_sleep_screen = active; }
 
 void draw_sleep_screen(lv_obj_t *canvas) {
     lv_draw_image_dsc_t img_dsc;
@@ -136,5 +137,5 @@ void draw_sleep_screen(lv_obj_t *canvas) {
 
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &quinquefive_8, LV_TEXT_ALIGN_LEFT);
-    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH-8, &label_dsc, "SLEEP");
+    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH - 8, &label_dsc, "SLEEP");
 }

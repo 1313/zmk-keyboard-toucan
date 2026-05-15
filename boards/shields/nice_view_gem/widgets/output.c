@@ -11,33 +11,33 @@ LV_IMAGE_DECLARE(usb);
 static void draw_usb_connected(lv_obj_t *canvas) {
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &quinquefive_8, LV_TEXT_ALIGN_LEFT);
-    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH-8, &label_dsc, "USB");
+    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH - 8, &label_dsc, "USB");
 }
 #endif
 
 static void draw_ble_disconnected(lv_obj_t *canvas) {
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &quinquefive_8, LV_TEXT_ALIGN_LEFT);
-    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH-8, &label_dsc, "NULL");
+    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH - 8, &label_dsc, "NULL");
 }
 
 static void draw_ble_connected(lv_obj_t *canvas) {
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &quinquefive_8, LV_TEXT_ALIGN_LEFT);
-    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH-8, &label_dsc, "BLE");
+    canvas_draw_text(canvas, 12, 140, SCREEN_WIDTH - 8, &label_dsc, "BLE");
 }
 
 void draw_output_status(lv_obj_t *canvas, const struct status_state *state) {
     switch (state->selected_endpoint.transport) {
-        case ZMK_TRANSPORT_USB:
-            draw_usb_connected(canvas);
-            break;
-        default:
-            if (state->active_profile_connected) {
-                draw_ble_connected(canvas);
-            } else {
-                draw_ble_disconnected(canvas);
-            }
-            break;
+    case ZMK_TRANSPORT_USB:
+        draw_usb_connected(canvas);
+        break;
+    default:
+        if (state->active_profile_connected) {
+            draw_ble_connected(canvas);
+        } else {
+            draw_ble_disconnected(canvas);
+        }
+        break;
     }
 }

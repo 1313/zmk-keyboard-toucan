@@ -1,0 +1,29 @@
+# Pre-commit hooks for zmk-keyboard-toucan.
+# Install: `pipx install pre-commit && pre-commit install`
+# Run on demand: `pre-commit run --all-files`
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        # Skip generated/asset files where layout matters
+        exclude: ^boards/shields/nice_view_gem/(assets/|widgets/sleep\.c)
+      - id: end-of-file-fixer
+        exclude: ^boards/shields/nice_view_gem/(assets/|widgets/sleep\.c)
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=64]
+        exclude: ^boards/shields/nice_view_gem/assets/
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v22.1.2
+    hooks:
+      - id: clang-format
+        files: \.(c|h)$
+        # Don't touch fonts/icon arrays (huge, generated, layout matters)
+        exclude: ^boards/shields/nice_view_gem/assets/

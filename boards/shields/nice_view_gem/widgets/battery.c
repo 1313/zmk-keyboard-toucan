@@ -11,7 +11,6 @@ LV_IMAGE_DECLARE(l_battery_50);
 LV_IMAGE_DECLARE(l_battery_25);
 LV_IMAGE_DECLARE(l_battery_10);
 
-
 static void draw_level(lv_obj_t *canvas, const struct status_state *state) {
     lv_draw_image_dsc_t img_dsc_l;
     lv_draw_image_dsc_init(&img_dsc_l);
