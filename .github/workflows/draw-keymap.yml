@@ -18,5 +18,4 @@ jobs:
       keymap_patterns: 'config/toucan.keymap'
       json_path: 'config'
       output_folder: 'keymap-drawer'
-      parse_args: 'toucan:--layer-names BASE NAV SYM ADJ APP'
       commit_message: 'keymap-drawer: render toucan.svg'
