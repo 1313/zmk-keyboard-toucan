@@ -11,6 +11,7 @@ cirque-input-module/
 nice-view-elemental/
 nice-view-gem/
 modules/
+!modules/sdc/
 optional/
 
 # Build output
