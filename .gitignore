@@ -10,8 +10,7 @@ zmk-rgbled-widget/
 cirque-input-module/
 nice-view-elemental/
 nice-view-gem/
-modules/*
-!modules/sdc/
+modules/
 optional/
 
 # Build output
@@ -19,3 +18,4 @@ build/
 
 # Local firmware artifacts (downloaded from CI)
 firmware-artifacts/
+.build-workspace/
